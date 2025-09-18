@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Shortr</title>
+        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css" />
+        <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.7/dist/htmx.min.js"
+                integrity="sha384-ZBXiYtYQ6hJ2Y0ZNoYuI+Nq5MqWBr+chMrS/RkXpNzQCApHEhOt2aY8EJgqwHLkJ"
+                crossorigin="anonymous"></script>
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/">
+                    <h1 class="title has-text-light">Shortr</h1>
+                </a>
+            </div>
+        </nav>
+        <section class="section">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column is-half">
+                        <div class="card">
+                            <div class="card-content">
+                                <p class="title is-4 has-text-centered">Shorten your URL</p>
+                                <form hx-post="/" hx-target="#shortened-url-result" hx-swap="innerHTML">
+                                    {% csrf_token %}
+                                    <div class="field">
+                                        <label class="label">Long URL</label>
+                                        <div class="control">
+                                            <input class="input"
+                                                   type="url"
+                                                   name="long_url"
+                                                   placeholder="e.g., https://www.example.com/very/long/url"
+                                                   required />
+                                        </div>
+                                        <div id="long-url-error"></div>
+                                        <!-- Error messages will be displayed here -->
+                                    </div>
+                                    <div class="field" id="shortened-url-result">
+                                        <!-- Shortened URL will be displayed here -->
+                                    </div>
+                                    <div class="field">
+                                        <div class="control has-text-centered">
+                                            <button class="button is-primary" type="submit">Shorten</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
+

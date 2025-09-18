@@ -8,10 +8,10 @@ log() {
 log "Starting Django project initialization"
 
 log "Running database migrations"
-uv run manage.py migrate --noinput
+python manage.py migrate --noinput
 
 log "Collecting static files"
-uv run manage.py collectstatic --noinput --clear
+python manage.py collectstatic --noinput --clear
 
 log "Starting Django"
-uv run manage.py runserver 0.0.0.0:8000
+python manage.py runserver 0.0.0.0:8000

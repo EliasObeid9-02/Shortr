@@ -5,8 +5,10 @@ import dj_database_url
 import sqids
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-SECRET_KEY = os.environ.get("SECRET_KEY")
-DEBUG = os.environ.get("DEBUG")
+SECRET_KEY = os.environ.get(
+    "SECRET_KEY", "fl4*f@rmc_s8ef9q_^+&di014&=tq49_(4%18z(w9d%ozt*y#k"
+)
+DEBUG = os.environ.get("DEBUG", "True") == "True"
 ALLOWED_HOSTS = []
 
 CSRF_TRUSTED_ORIGINS = []

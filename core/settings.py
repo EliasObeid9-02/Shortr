@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 
 import dj_database_url
+import sqids
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
@@ -86,3 +87,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 # Other
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+SQID_ALPHABET = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+SQID_MIN_LEN = 6
+
+DEFAULT_SQID = sqids.Sqids(
+    alphabet=SQID_ALPHABET,
+    min_length=SQID_MIN_LEN,
+)
